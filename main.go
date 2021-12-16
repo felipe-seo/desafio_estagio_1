@@ -57,16 +57,15 @@ func divideTab(il map[int]item, el []string) (map[string]int, error) {
 	if verifyEmails(el) {
 		return tab, errors.New("emailsError")
 	}
-	//fazer condição para interromper caso venha alguma lista defeituosa
 
 	for _, element := range il {
 		total += element.price * element.amount
 	}
-	fmt.Println("Total: ", total)
+
 	remainder := int(total) % len(el)
-	fmt.Println("Resto: ", remainder)
+
 	totalPerAccount := total / len(el)
-	fmt.Println("Divisão: ", totalPerAccount)
+
 	//distribuir a sobra, centavo por centavo, até não ter mais sobra
 	for _, v := range el {
 		if remainder > 0 {
