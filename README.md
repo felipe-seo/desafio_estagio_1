@@ -1,5 +1,5 @@
 # desafio_estagio_1
-Desafio 1 da trilha de estágio em back end go da Stone
+Desafio 1 da trilha de estágio em back end go da Stone.
 
 Neste desafio as entradas são uma lista de items e uma lista de e-mails.
 
@@ -18,7 +18,7 @@ Dentro da função divideTab verifico se as listas estão vazias
 Se elas passarem pela verificação:
   calculo o valor total da conta, somando os resultados da multiplicação do preço pela quantidade;
   divido o total pelo número de e-mails;
-  caso haja sobra, por exemplo 4 pessoas e uma conta de 43 reais, divido os 3 reais que sobraram entre os e-mails;
+  caso haja sobra, por exemplo 4 pessoas e uma conta de 43 centavos, divido os 3 centavos que sobraram entre os e-mails;
   retorno um map contendo as informações.
 
 
