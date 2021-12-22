@@ -43,11 +43,11 @@ func main() {
 	}
 	//printo a lista
 	fmt.Println("Lista de emails: ", emailList)
-	divideTab(itemList, emailList)
+	DivideTab(itemList, emailList)
 }
 
 //função que calcula a conta, recebe os itens e os clientes
-func divideTab(il map[int]item, el []string) (map[string]int, error) {
+func DivideTab(il map[int]item, el []string) (map[string]int, error) {
 	total := 0
 	tab := make(map[string]int, len(el))
 
@@ -76,7 +76,8 @@ func divideTab(il map[int]item, el []string) (map[string]int, error) {
 		}
 	}
 	fmt.Println("Conta: ", tab)
-	return tab, errors.New("error")
+
+	return tab, nil
 }
 func verifyItems(il map[int]item) bool {
 	if len(il) == 0 {
