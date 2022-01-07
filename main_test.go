@@ -40,12 +40,12 @@ func TestMain(t *testing.T) {
 		{
 			itemList: map[int]item{
 				1: {
-					name:   "batata",
+					name:   "bala",
 					amount: 1,
 					price:  100,
 				},
 				2: {
-					name:   "tomate",
+					name:   "alho",
 					amount: 10,
 					price:  15,
 				},
@@ -55,6 +55,71 @@ func TestMain(t *testing.T) {
 				"b@mail.com",
 			},
 			expectedOutput: map[string]int{"a@mail.com": 125, "b@mail.com": 125},
+		},
+		{
+			itemList: map[int]item{
+				1: {
+					name:   "bala",
+					amount: 1,
+					price:  00,
+				},
+				2: {
+					name:   "alho",
+					amount: 10,
+					price:  10,
+				},
+			},
+			emailList: []string{
+				"a@mail.com",
+				"b@mail.com",
+			},
+			expectedOutput: map[string]int{"Algo de errado com a lista de itens": 1},
+		},
+
+		{
+			itemList: map[int]item{},
+			emailList: []string{
+				"a@mail.com",
+				"b@mail.com",
+			},
+			expectedOutput: map[string]int{"Lista de itens vazia": 1},
+		},
+
+		{
+			itemList: map[int]item{
+				1: {
+					name:   "bala",
+					amount: 1,
+					price:  10,
+				},
+				2: {
+					name:   "alho",
+					amount: 10,
+					price:  15,
+				},
+			},
+			emailList:      []string{},
+			expectedOutput: map[string]int{"Lista de e-mails vazia": 1},
+		},
+
+		{
+			itemList: map[int]item{
+				1: {
+					name:   "bala",
+					amount: 1,
+					price:  10,
+				},
+				2: {
+					name:   "alho",
+					amount: 10,
+					price:  15,
+				},
+			},
+			emailList: []string{
+				"",
+				"b@mail.com",
+			},
+			expectedOutput: map[string]int{"Algum e-mail em branco na lista de e-mails": 1},
 		},
 	}
 

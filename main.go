@@ -1,7 +1,6 @@
 package main
 
 import (
-	"errors"
 	"fmt"
 )
 
@@ -15,7 +14,7 @@ func main() {
 	//crio os items
 	item1 := item{
 		name:   "batata",
-		amount: 1,
+		amount: 0,
 		price:  100,
 	}
 	item2 := item{
@@ -29,7 +28,7 @@ func main() {
 		2: item2,
 	}
 	//printo a lista
-	fmt.Println("Lista de items: ", itemList)
+	//fmt.Println("Lista de items: ", itemList)
 
 	//crio a lista de e-mails
 	emailList := []string{
@@ -42,20 +41,9 @@ func main() {
 		"adam@mail.com",
 	}
 	//printo a lista
-	fmt.Println("Lista de emails: ", emailList)
+	//fmt.Println("Lista de emails: ", emailList)
 	DivideTab(itemList, emailList)
 
-	itemList2 := map[int]item{
-		2: item2,
-	}
-	emailList2 := []string{
-		"mary@mail.com",
-		"john@mail.com",
-		"rose@mail.com",
-		"sunny@mail.com",
-	}
-
-	DivideTab(itemList2, emailList2)
 }
 
 //função que calcula a conta, recebe os itens e os clientes
@@ -63,11 +51,11 @@ func DivideTab(il map[int]item, el []string) (map[string]int, error) {
 	total := 0
 	tab := make(map[string]int, len(el))
 
-	if verifyItems(il) {
-		return tab, errors.New("itemsError")
+	if verifyItems(il) != nil {
+		return verifyItems(il), nil
 	}
-	if verifyEmails(el) {
-		return tab, errors.New("emailsError")
+	if verifyEmails(el) != nil {
+		return verifyEmails(el), nil
 	}
 
 	for _, element := range il {
@@ -91,31 +79,32 @@ func DivideTab(il map[int]item, el []string) (map[string]int, error) {
 
 	return tab, nil
 }
-func verifyItems(il map[int]item) bool {
+
+func verifyItems(il map[int]item) map[string]int {
 	if len(il) == 0 {
-		fmt.Println("Lista vazia")
-		return true
+		//fmt.Println("Lista de itens vazia")
+		return map[string]int{"Lista de itens vazia": 1}
 	}
 	for _, v := range il {
 		if v.name == "" || v.amount == 0 || v.price == 0 {
-			fmt.Printf("Algo de errado com o item: %v", v)
-			return true
+			//fmt.Printf("Algo de errado com o item: %v", v)
+			return map[string]int{"Algo de errado com a lista de itens": 1}
 		}
 	}
-	return false
+	return nil
 }
 
-func verifyEmails(el []string) bool {
+func verifyEmails(el []string) map[string]int {
 	if len(el) == 0 {
-		fmt.Println("Lista vazia")
-		return true
+		//fmt.Println("Lista de e-mails vazia")
+		return map[string]int{"Lista de e-mails vazia": 1}
 	}
 	//fazer algo para verificar se tem já tem o email na lista
 	for _, v := range el {
 		if v == "" {
-			fmt.Printf("Algo de errado com o email: %v", v)
-			return true
+			//fmt.Printf("Algo de errado com o email: %v", v)
+			return map[string]int{"Algum e-mail em branco na lista de e-mails": 1}
 		}
 	}
-	return false
+	return nil
 }
