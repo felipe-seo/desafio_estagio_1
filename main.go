@@ -20,8 +20,8 @@ func main() {
 	}
 	item2 := item{
 		name:   "tomate",
-		amount: 1,
-		price:  109,
+		amount: 10,
+		price:  15,
 	}
 	//crio a lista de items
 	itemList := map[int]item{
@@ -44,6 +44,18 @@ func main() {
 	//printo a lista
 	fmt.Println("Lista de emails: ", emailList)
 	DivideTab(itemList, emailList)
+
+	itemList2 := map[int]item{
+		2: item2,
+	}
+	emailList2 := []string{
+		"mary@mail.com",
+		"john@mail.com",
+		"rose@mail.com",
+		"sunny@mail.com",
+	}
+
+	DivideTab(itemList2, emailList2)
 }
 
 //função que calcula a conta, recebe os itens e os clientes
