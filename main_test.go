@@ -56,6 +56,28 @@ func TestMain(t *testing.T) {
 			},
 			expectedOutput: map[string]int{"a@mail.com": 125, "b@mail.com": 125},
 		},
+
+		{
+			itemList: map[int]item{
+				1: {
+					name:   "chiclete",
+					amount: 1,
+					price:  151,
+				},
+				2: {
+					name:   "alho",
+					amount: 10,
+					price:  15,
+				},
+			},
+			emailList: []string{
+				"a@mail.com",
+				"b@mail.com",
+				"c@mail.com",
+			},
+			expectedOutput: map[string]int{"a@mail.com": 101, "b@mail.com": 100, "c@mail.com": 100},
+		},
+
 		{
 			itemList: map[int]item{
 				1: {
