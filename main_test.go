@@ -8,12 +8,14 @@ import (
 
 func TestMain(t *testing.T) {
 	type useCase struct {
+		name           string
 		itemList       map[int]item
 		emailList      []string
 		expectedOutput map[string]int
 	}
 	casesTable := []useCase{
 		{
+			name: "Normal usage, multiple people pay less, multiple people pay more",
 			itemList: map[int]item{
 				1: {
 					name:   "batata",
@@ -38,6 +40,7 @@ func TestMain(t *testing.T) {
 			expectedOutput: map[string]int{"adam@mail.com": 35, "debra@mail.com": 35, "john@mail.com": 36, "julia@mail.com": 36, "mary@mail.com": 36, "rose@mail.com": 36, "sunny@mail.com": 36},
 		},
 		{
+			name: "Normal usage, everyone pays the same",
 			itemList: map[int]item{
 				1: {
 					name:   "bala",
@@ -58,6 +61,7 @@ func TestMain(t *testing.T) {
 		},
 
 		{
+			name: "Normal usage, multiple people pay less, one person pays more",
 			itemList: map[int]item{
 				1: {
 					name:   "chiclete",
@@ -79,6 +83,7 @@ func TestMain(t *testing.T) {
 		},
 
 		{
+			name: "No price in some item",
 			itemList: map[int]item{
 				1: {
 					name:   "bala",
@@ -99,6 +104,7 @@ func TestMain(t *testing.T) {
 		},
 
 		{
+			name:     "Empty items list",
 			itemList: map[int]item{},
 			emailList: []string{
 				"a@mail.com",
@@ -108,6 +114,7 @@ func TestMain(t *testing.T) {
 		},
 
 		{
+			name: "Empty e-mail list",
 			itemList: map[int]item{
 				1: {
 					name:   "bala",
@@ -125,6 +132,7 @@ func TestMain(t *testing.T) {
 		},
 
 		{
+			name: "One or more blank e-mails",
 			itemList: map[int]item{
 				1: {
 					name:   "bala",
