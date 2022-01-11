@@ -108,3 +108,5 @@ func verifyEmails(el []string) map[string]int {
 	}
 	return nil
 }
+
+//avaliação
